@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RegisterService from "../backend/db/RegisterService";
+import RegisterService from "../firebase/firebase";
 import Register from "../core/Register";
 import IRegister from "../core/IRegister";
 import useShowListForm from "./useShowListForm";
