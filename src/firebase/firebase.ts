@@ -63,13 +63,18 @@ import {
   SnapshotOptions,
 } from "firebase/firestore";
 
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore/lite";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getStorage } from "firebase/storage";
+
 const firebaseConfig = {
-  apiKey: "AIzaSyBrDW_geNUSQ_xwJx95jjHbBnkNBpzvsSw",
-  authDomain: "vue-axios-30475.firebaseapp.com",
-  projectId: "vue-axios-30475",
-  storageBucket: "vue-axios-30475.appspot.com",
-  messagingSenderId: "901277628208",
-  appId: "1:901277628208:web:f538fe236ffdb945e07af5",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
