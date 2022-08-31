@@ -7,6 +7,11 @@
 
 <p> 🔍 How to Use FireBase Version 9 in nextjs </p>
 
+## Screen Example
+#### Table (Edit Delete)
+![LIST](images/../src/images/readme-1.webp)
+#### Input Form
+![LIST](images/../src/images/readme-2.webp)
 ## **Description**
 
 <ul>
