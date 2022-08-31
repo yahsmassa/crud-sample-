@@ -1,27 +1,25 @@
-<h1 align="center">FireStore CRUD SAMPLE </h1>
+<h1 align="center">FireStore Version 9 CRUD SAMPLE </h1>
 
 
 <p align="center"> 🚀 React, NextJS, FireBase, TypeScript, Tailwindcss </p>
 
 ## **Summary**
 
-<p> 🔍 How to Use FireBase in nextjs </p>
-
-
-
+<p> 🔍 How to Use FireBase Version 9 in nextjs </p>
 
 ## **Description**
 
 <ul>
-<li>🛠 Ideal as a MEMO
-<li>🛠 Data Convert in FireStore
-<li>🛠 Basic Technic for FireStore 9.X
+<li>🛠 Basic CRUD Technics for FireStore Version 9
+<li>🛠 Data Convert Method in FireStore
+<li>🛠 Custom Hook for FireStore and Form
+<li>🛠 Simple Form Control
 <li>🛠 TypeScript
-<li>🛠 CRUD  Integrated into  Class
-<li>🛠 Simple Directory Configuration
 <li>🛠 Tailwindcss
+<li>🛠 You need to rename .env.local.sample to .env.local
+<li>🛠 You need to configure env.local for your own firestore account information
+
 </ul>
 
 ## **Author**
-Desenvolvido por Valter Junior
-Yahsmassa aranged in English
+Yahsmassa ( Yasumasa Yabui)

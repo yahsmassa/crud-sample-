@@ -1,4 +1,4 @@
-import Register from "../core/Register";
+import Register from "../types/Register";
 import { IconEdit, IconGarbage } from "./Icons";
 
 interface IListProps {
@@ -13,7 +13,7 @@ export default function showList(props: IListProps) {
   function renderHead() {
     return (
       <tr>
-        <th className="text-left p-4">Code</th>
+        <th className="text-left p-4 hidden md:flex">Code</th>
         <th className="text-left p-4">Name</th>
         <th className="text-left p-4">Age</th>
         {showEdit ? <th className=" p-4">Edit</th> : false}
@@ -26,11 +26,13 @@ export default function showList(props: IListProps) {
       return (
         <tr
           key={client.id}
-          className={`${i % 2 === 0 ? "bg-blue-100" : "bg-blue-200"}`}
+          className={`${
+            i % 2 === 0 ? "bg-blue-100" : "bg-blue-200"
+          } table-auto`}
         >
-          <td className="text-left p-4">{client.id}</td>
-          <td className="text-left p-4">{client.name}</td>
-          <td className="text-left p-4">{client.age}</td>
+          <td className="text-left p-2 hidden md:flex">{client.id}</td>
+          <td className="text-left p-2">{client.name}</td>
+          <td className="text-left p-2">{client.age}</td>
           {showEdit ? renderAlterIcons(client) : false}
         </tr>
       );
@@ -65,10 +67,10 @@ export default function showList(props: IListProps) {
   }
 
   return (
-    <table className="w-full rounded-xl overflow-hidden">
+    <table className="w-full rounded-xl overflow-hidden table-auto">
       <thead
         className={`
-                bg-gradient-to-r from-cyan-500 to-blue-400 text-gray-100
+                bg-gradient-to-r from-blue-500 to-blue-400 text-gray-100
             `}
       >
         {renderHead()}

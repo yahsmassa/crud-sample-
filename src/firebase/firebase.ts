@@ -1,54 +1,5 @@
-// Import the functions you need from the SDKs you need
-
-// export const registerNewMedicalRecord = async (
-//   newMedicalRecord: MedicalModel
-// ) => {
-//   try {
-//     await addDoc(collectionRef, newMedicalRecord);
-//       "Good work!",
-//       "The medical record was successfully registered",
-//       "success"
-//     );
-//   } catch (error) {
-//   }
-// };
-
-// export const deleteMedicalRecord = async (id: string) => {
-//   try {
-//     const docRef = doc(db, collectionName, id);
-//     await deleteDoc(docRef);
-//   } catch (error) {
-//   }
-// };
-
-// export const editMedicalRecord = async (
-//   editMedicalRecord: MedicalModel,
-//   id: string
-// ) => {
-//   try {
-//     const docRef = doc(db, collectionName, id);
-//     await updateDoc(docRef, { ...editMedicalRecord });
-//   } catch (error) {
-//   }
-// };
-
-// export const getMedicalRecords = async (q: Query<DocumentData>) => {
-//   try {
-//     const querySnapshot = await getDocs(q);
-//     return querySnapshot.docs.map(
-//       (doc: QueryDocumentSnapshot<DocumentData>) =>
-//         ({
-//           id: doc.id,
-//           ...doc.data(),
-//         } as MedicalModel)
-//     );
-//   } catch (error) {
-//     return [];
-//   }
-// };
-
-import Register from "../core/Register";
-import IClient from "../core/IRegister";
+import Register from "../types/Register";
+import IClient from "../types/IRegister";
 import { initializeApp } from "firebase/app";
 import {
   getFirestore,
@@ -63,11 +14,6 @@ import {
   SnapshotOptions,
 } from "firebase/firestore";
 
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore/lite";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
-import { getStorage } from "firebase/storage";
-
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -80,9 +26,10 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
-export const collectionRef = collection(db, "clientes");
+export const clientsRef = collection(db, "clientes");
 
 export default class registerService implements IClient {
+  //https://firebase.google.com/docs/firestore/manage-data/add-data#custom_objects
   myConverter = {
     toFirestore(resident: Register) {
       return {
@@ -98,7 +45,7 @@ export default class registerService implements IClient {
       return new Register(data.name, data.age, snapshot.id);
     },
   };
-
+  //https://firebase.google.com/docs/firestore/manage-data/add-data#add_a_document
   async save(resident: Register): Promise<Register | undefined> {
     if (resident?.id) {
       const docRef = doc(db, "clientes", resident.id).withConverter(
@@ -113,12 +60,12 @@ export default class registerService implements IClient {
       return doc.data();
     }
   }
-
+  //https://firebase.google.com/docs/firestore/manage-data/delete-data
   async delete(resident: Register): Promise<void> {
     const docRef = doc(db, "clientes", resident.id);
     return await deleteDoc(docRef);
   }
-
+  //https://firebase.google.com/docs/firestore/query-data/get-data#get_multiple_documents_from_a_collection
   async getResidents(): Promise<Register[]> {
     const docs = this.getConvertedResidents();
     const snapDocs = await getDocs(docs);
@@ -126,6 +73,6 @@ export default class registerService implements IClient {
   }
 
   private getConvertedResidents() {
-    return collectionRef.withConverter(this.myConverter);
+    return clientsRef.withConverter(this.myConverter);
   }
 }

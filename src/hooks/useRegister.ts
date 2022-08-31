@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import RegisterService from "../firebase/firebase";
-import Register from "../core/Register";
-import IRegister from "../core/IRegister";
+import Register from "../types/Register";
+import IRegister from "../types/IRegister";
 import useShowListForm from "./useShowListForm";
 
 export default function useRegister() {

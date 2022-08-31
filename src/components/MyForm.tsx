@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Register from "../core/Register";
+import Register from "../types/Register";
 import MyButton from "./MyButton";
 import MyImput from "./MyImput";
 
