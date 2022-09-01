@@ -3,13 +3,13 @@ import Register from "../types/Register";
 import MyButton from "./MyButton";
 import MyImput from "./MyImput";
 
-interface FormatProps {
+interface MyFormProps {
   client: Register;
   clientChange?: (cliente: Register) => void;
   cancel?: () => void;
 }
 
-export default function Format(props: FormatProps) {
+export default function MyForm(props: MyFormProps) {
   const id = props.client?.id;
   const [name, setName] = useState(props.client?.name ?? "");
   const [age, setAge] = useState(props.client?.age ?? 0);
